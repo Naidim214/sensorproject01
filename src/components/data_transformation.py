@@ -19,7 +19,7 @@ from dataclasses import dataclass
 class DataTransformationConfig:
     artifact_dir = os.path.join(artifact_folder)
     transformed_train_file_path = os.path.join(artifact_dir,'train.npy')
-    transformed_train_file_path = os.join(artifact_dir,'test.npy')
+    transformed_train_file_path = os.path.join(artifact_dir,'test.npy')
     transformed_object_file_path = os.path.join(artifact_dir,'preprocessor.pkl')
 
 
@@ -84,8 +84,8 @@ class DataTransformation:
 
             self.utils.save_object(file_path= preprocessor_path, obj= preprocessor)
 
-            train_arr =np.c[X_train_scaled,np.array(y_train)]
-            test_arr = np.c[X_test_scaled,np.array(y_test)]
+            train_arr =np.c_[X_train_scaled,np.array(y_train)]
+            test_arr = np.c_[X_test_scaled,np.array(y_test)]
 
             return (train_arr,test_arr,preprocessor_path)
         except Exception as e:
